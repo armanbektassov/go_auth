@@ -23,27 +23,25 @@ enum UserRole {
 message UserInfo {
   string name = 1;
   string email = 2;
+  UserRole role = 3;
+  string password = 4;
+  string password_confirm = 5;
 }
 
 message User {
   int64 id = 1;
   UserInfo info = 2;
-  UserRole role = 3;
   google.protobuf.Timestamp created_at = 4;
   google.protobuf.Timestamp updated_at = 5;
 }
 
-message UpdateNoteInfo {
-  google.protobuf.StringValue title = 1;
-  google.protobuf.StringValue context = 2;
-  google.protobuf.StringValue author = 3;
-  google.protobuf.BoolValue is_public = 4;
+message UpdateUserInfo {
+  google.protobuf.StringValue name = 1;
+  google.protobuf.StringValue email = 2;
 }
 
 message CreateRequest {
   UserInfo info = 1;
-  string password = 2;
-  string password_confirm = 3;
 }
 
 message CreateResponse {
