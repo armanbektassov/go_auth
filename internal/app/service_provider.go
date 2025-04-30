@@ -5,15 +5,15 @@ import (
 	"log"
 
 	"github.com/armanbektassov/go_auth/internal/api/user"
-	"github.com/armanbektassov/go_auth/internal/client/db"
-	"github.com/armanbektassov/go_auth/internal/client/db/pg"
-	"github.com/armanbektassov/go_auth/internal/client/db/transaction"
-	"github.com/armanbektassov/go_auth/internal/closer"
 	"github.com/armanbektassov/go_auth/internal/config"
 	"github.com/armanbektassov/go_auth/internal/repository"
 	userRepository "github.com/armanbektassov/go_auth/internal/repository/user"
 	"github.com/armanbektassov/go_auth/internal/service"
 	userService "github.com/armanbektassov/go_auth/internal/service/user"
+	"github.com/armanbektassov/platform_common/pkg/client/db"
+	"github.com/armanbektassov/platform_common/pkg/client/db/pg"
+	"github.com/armanbektassov/platform_common/pkg/client/db/transaction"
+	"github.com/armanbektassov/platform_common/pkg/closer"
 )
 
 type serviceProvider struct {

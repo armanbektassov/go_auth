@@ -5,11 +5,11 @@ import (
 
 	sq "github.com/Masterminds/squirrel"
 
-	"github.com/armanbektassov/go_auth/internal/client/db"
 	"github.com/armanbektassov/go_auth/internal/model"
 	"github.com/armanbektassov/go_auth/internal/repository"
 	"github.com/armanbektassov/go_auth/internal/repository/user/converter"
 	modelRepo "github.com/armanbektassov/go_auth/internal/repository/user/model"
+	"github.com/armanbektassov/platform_common/pkg/client/db"
 )
 
 const (

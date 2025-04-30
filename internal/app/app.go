@@ -9,9 +9,9 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/reflection"
 
-	"github.com/armanbektassov/go_auth/internal/closer"
 	"github.com/armanbektassov/go_auth/internal/config"
 	desc "github.com/armanbektassov/go_auth/pkg/user_v1"
+	"github.com/armanbektassov/platform_common/pkg/closer"
 )
 
 type App struct {
