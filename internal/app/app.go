@@ -17,6 +17,8 @@ import (
 	"google.golang.org/grpc/reflection"
 
 	"github.com/armanbektassov/go_auth/internal/config"
+	descAccess "github.com/armanbektassov/go_auth/pkg/access_v1"
+	descAuth "github.com/armanbektassov/go_auth/pkg/auth_v1"
 	desc "github.com/armanbektassov/go_auth/pkg/user_v1"
 	_ "github.com/armanbektassov/go_auth/statik"
 	"github.com/armanbektassov/platform_common/pkg/closer"
@@ -123,6 +125,8 @@ func (a *App) initGRPCServer(ctx context.Context) error {
 	reflection.Register(a.grpcServer)
 
 	desc.RegisterUserV1Server(a.grpcServer, a.serviceProvider.UserImpl(ctx))
+	descAuth.RegisterAuthV1Server(a.grpcServer, a.serviceProvider.AuthImpl(ctx))
+	descAccess.RegisterAccessV1Server(a.grpcServer, a.serviceProvider.AccessImpl(ctx))
 
 	return nil
 }

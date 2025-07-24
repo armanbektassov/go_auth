@@ -8,6 +8,7 @@ require (
 	github.com/Masterminds/squirrel v1.5.4
 	github.com/armanbektassov/platform_common v0.0.0-20250429073954-ac442d5cacb9
 	github.com/brianvoe/gofakeit/v6 v6.28.0
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/envoyproxy/protoc-gen-validate v1.2.1
 	github.com/gojuno/minimock/v3 v3.4.5
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.3

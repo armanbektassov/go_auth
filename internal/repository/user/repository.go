@@ -83,3 +83,29 @@ func (r *repo) Get(ctx context.Context, id int64) (*model.User, error) {
 
 	return converter.ToUserFromRepo(&user), nil
 }
+
+func (r *repo) GetByUsername(ctx context.Context, username string) (*model.User, error) {
+	builder := sq.Select(idColumn, nameColumn, emailColumn, roleColumn, passwordColumn, createdAtColumn, updatedAtColumn).
+		PlaceholderFormat(sq.Dollar).
+		From(tableName).
+		Where(sq.Eq{nameColumn: username}).
+		Limit(1)
+
+	query, args, err := builder.ToSql()
+	if err != nil {
+		return nil, err
+	}
+
+	q := db.Query{
+		Name:     "user_repository.GetByUsername",
+		QueryRaw: query,
+	}
+
+	var user modelRepo.User
+	err = r.db.DB().QueryRowContext(ctx, q, args...).Scan(&user.ID, &user.Info.Name, &user.Info.Email, &user.Info.Role, &user.Info.Password, &user.CreatedAt, &user.UpdatedAt)
+	if err != nil {
+		return nil, err
+	}
+
+	return converter.ToUserFromRepo(&user), nil
+}

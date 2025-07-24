@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package auth_v1;
+
+option go_package = "github.com/armanbektassov/go_auth/pkg/auth/v1/;auth_v1";
+
+service AuthV1 {
+  rpc Login(LoginRequest) returns (RefreshTokenResponse);
+
+  rpc GetRefreshToken(GetRefreshTokenRequest) returns (RefreshTokenResponse);
+
+  rpc GetAccessToken(GetAccessTokenRequest) returns (AccessTokenResponse);
+}
+
+message LoginInfo {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginRequest {
+  LoginInfo login_info = 1;
+}
+
+message RefreshTokenResponse {
+  string refresh_token = 1;
+}
+
+message GetRefreshTokenRequest {
+  string old_refresh_token = 1;
+}
+
+message GetAccessTokenRequest {
+  string refresh_token = 1;
+}
+
+message AccessTokenResponse {
+  string access_token = 1;
+}
+
+
+
